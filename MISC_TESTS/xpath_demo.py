@@ -8,11 +8,9 @@ with sync_playwright() as p:
     #xpath =relative xpath es con //
     # using attribute //tagname[@attributename="value"]
     
-    username=page.wait_for_selector('//input[@name="username"]')
-    username.type('admin')
-    password=page.wait_for_selector('//input[@placeholder="Password"]')
-    password.type('admin123')
-    botonlogin=page.wait_for_selector('//button[@type="submit"]')    
-    botonlogin.click()
+    page.locator('input[name="username"]').fill('admin')
+    page.locator('input[placeholder="Password"]').fill('admin123')
+    page.locator('button[type="submit"]').click()
+
     
     page.wait_for_timeout(3000)

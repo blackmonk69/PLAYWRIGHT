@@ -7,13 +7,15 @@ with sync_playwright() as p:
     
     #for css selector id #, class ., attribute tagname[attribute="value"]
   #como usar el id
-    username=page.wait_for_selector('input[name="username"]')
-    username.type('Admin')
+    username = page.locator('input[name="username"]')
+    username.fill("Admin")
     
-    username=page.wait_for_selector('input[type="password"]')
+    
+    
+    username=page.locator('input[type="password"]')
     username.type('admin123')
     
-    botonlogin=page.wait_for_selector('button[type="submit"]')
+    botonlogin=page.locator('button[type="submit"]')
     
     botonlogin.click()
     page.wait_for_timeout(3000)

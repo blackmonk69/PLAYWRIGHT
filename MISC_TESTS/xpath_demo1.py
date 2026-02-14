@@ -10,7 +10,8 @@ with sync_playwright() as p:
     # USAMOS LA BUSQUEDA CON UN TEXTO
     # text //tagname[text()="text"]
     # text - //tagname[text()="text"]
-    page.wait_for_selector('//p[text()="Forgot your password? "]').click()
+    page.locator('text=Forgot your password?').click()
+
     page.wait_for_timeout(3000)
     
     # contains

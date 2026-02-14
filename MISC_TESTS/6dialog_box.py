@@ -11,10 +11,15 @@ with sync_playwright() as p:
     page = browser.new_page()
     page.goto('https://demo.automationtesting.in/Alerts.html')
 
-    page.wait_for_selector('//a[@href="#CancelTab"]').click()
-    page.wait_for_timeout(2000)
-    page.on("dialog",handle_dialog)
-    page.wait_for_selector('//div[@id="CancelTab"]/button').click()
+# registrar el handler ANTES
+    page.on("dialog", handle_dialog)
+
+    # abrir el tab
+    page.locator('a[href="#CancelTab"]').click()
+
+    # click en el botón dentro del tab
+    page.locator('#CancelTab button').click()
+
     page.wait_for_timeout(2000)
     print(text_alert[0])
     

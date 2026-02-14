@@ -5,7 +5,9 @@ with sync_playwright() as p:
     context = browser.new_context()
     page = context.new_page()
     page.goto('https://demo.automationtesting.in/Windows.html#Multiple')
-    page.wait_for_selector('//button[contains(text(),"    click   ")]').click()
+   
+    page.get_by_role("button", name="    click   ").click()
+
     page.wait_for_timeout(3000)
     total_pages = context.pages
     print(len(total_pages))

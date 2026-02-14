@@ -7,9 +7,13 @@ with sync_playwright() as p:
     
     #for css selector id #, class ., attribute tagname[attribute="value"]
   #como usar el id
-    emailtxtbox=page.wait_for_selector('#email')
-    emailtxtbox.type('test@gmail.com')
+    emailtxtbox = page.wait_for_selector('#email')
+    assert emailtxtbox is not None
+    emailtxtbox.fill('test@gmail.com')
+
     
-    buttonsend=page.wait_for_selector('#enterimg')
+    buttonsend = page.wait_for_selector('#enterimg')
+    assert buttonsend is not None
     buttonsend.click()
+
     page.wait_for_timeout(3000)

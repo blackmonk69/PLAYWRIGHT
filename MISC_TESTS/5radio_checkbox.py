@@ -5,10 +5,20 @@ with sync_playwright() as p:
     page=browser.new_page()
     page.goto('https://demo.automationtesting.in/Register.html')
     
-    select_dropdown=page.query_selector('//select[@id="Skills"]')
+    page.locator('input[value="FeMale"]').check()
+ 
     
-    #hay que elegir la opcion ahora
-    select_dropdown.select_option(label='Art Design')
+    radio = page.locator('input[value="FeMale"]')
+
+    if radio.is_checked():
+        print("Passed")
+    else:
+        print("Failed")
+        
+    
+    page.locator('input[value="Cricket"]').check()
+
+   
     page.wait_for_timeout(3000)
     
     #de esta forma se lo busque y selecciona en un solo paso
