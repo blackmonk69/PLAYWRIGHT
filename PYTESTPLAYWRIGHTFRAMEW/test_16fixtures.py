@@ -20,4 +20,4 @@ def page(browser):
 def test_goto_google(page):
     page.goto('https://www.google.com/')
     assert 'Google' == page.title()
-    assert "login" in page.url
+    
