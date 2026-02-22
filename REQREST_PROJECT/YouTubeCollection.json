@@ -1,0 +1,221 @@
+{
+  "info": {
+    "_postman_id": "10d951e9-3bd3-4ae6-beb9-11dfacc37c15",
+    "name": "YouTubeCollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48079896",
+    "_collection_link": "https://go.postman.co/collection/48079896-10d951e9-3bd3-4ae6-beb9-11dfacc37c15?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "post req  message",
+      "item": [
+        {
+          "name": "create user",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "//esto se hace gralmente para limpiar las var en la sig request\r",
+                  "\r",
+                  "pm.environment.unset(\"Userid\")"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{email}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/api/users",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "getuserslist",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(20);\r",
+              "});\r",
+              "//crea una variable global que se usa en la siguiente request\r",
+              "var Jsondata = pm.response.json();\r",
+              "pm.globals.set(\"id01\",Jsondata.data[0].id)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{urlname}}/api/users",
+          "host": [
+            "{{urlname}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getsingleuser",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "//crea variable globals\r",
+              "\r",
+              "const Userid = Math.floor(Math.random() * 10 + 1);\r",
+              "console.log(\"Userid: \" + Userid);\r",
+              "pm.globals.set(\"Userid\", Userid);\r",
+              "\r",
+              "//crea variable environment\r",
+              "pm.environment.set(\"Userid\", Userid);\r",
+              "\r",
+              "//crea variable en coleccion\r",
+              "pm.collectionVariables.set(\"UserID03\", Userid);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//esto verifica que coincidan los valores\r",
+              "pm.test(\"Your test name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.value).to.eql(100);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{urlname}}/api/users/{{id01}}",
+          "host": [
+            "{{urlname}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "{{id01}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "reqres_cdf771bab95a4c1d91a7833d05f7fba5",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "urlname",
+      "value": "https://reqres.in",
+      "type": "default"
+    },
+    {
+      "key": "UserID03",
+      "value": ""
+    }
+  ]
+}
