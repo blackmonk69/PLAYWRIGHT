@@ -22,3 +22,9 @@ Please import these 2 json files, collections and environment into your Postman,
 newman run <collection-file-name>.json -e <environment-file-name>.json
 just replace file names and you are good to go.
 ![alt text](postman1.PNG "Title")
+![alt text](postman2.PNG "Title")
+![alt text](postman3.PNG "Title")
+![alt text](postman4.PNG "Title")
+![alt text](postman5.PNG "Title")
+
+
