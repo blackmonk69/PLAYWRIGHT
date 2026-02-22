@@ -18,4 +18,6 @@ This project involves showing typical uses cases when automating tests with Post
 - Run from command line, install node,js and NPM.Install Newman in order to run a collection from POstman on the command line.
 - Download and install Jenkins, setting up postman in Jenkins
 
-Please import these 2 json files, collections and environment into your Postman, to make sure you can enjoy this project.Remember to get your API key from reqres.in
+Please import these 2 json files, collections and environment into your Postman, to make sure you can enjoy this project.Remember to get your API key from reqres.in . When in Newman stage remember to run collection together with environment to make it work as this: 
+newman run <collection-file-name>.json -e <environment-file-name>.json
+just replace file names and you are good to go.
