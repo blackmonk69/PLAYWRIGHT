@@ -21,4 +21,4 @@ This project involves showing typical uses cases when automating tests with Post
 Please import these 2 json files, collections and environment into your Postman, to make sure you can enjoy this project.Remember to get your API key from reqres.in . When in Newman stage remember to run collection together with environment to make it work as this: 
 newman run <collection-file-name>.json -e <environment-file-name>.json
 just replace file names and you are good to go.
-![alt text](postman1.png "Title")
+![alt text](postman1.PNG "Title")
