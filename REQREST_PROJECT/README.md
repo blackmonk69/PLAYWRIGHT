@@ -1,6 +1,6 @@
 # Postman Project, using variables, scripts, tests, Newman and Jenkins 
 
-This project involves showing typical uses cases when automating tests with Postman. We will use the https://reqres.in/ public api to carry out this project. Make sure you get your own api key and write it in the environmental variable to try these requests.
+This project involves showing typical uses cases when automating tests with Postman. We will use the https://reqres.in/ public api to carry out this project. Make sure you get your own api key and write it in the collections settings, Authorizations--Api-key variable to try these requests.
 
 ## Features
 - Use of request for POST, GET, DELETE.
