@@ -1,6 +1,7 @@
 import pytest
 from playwright.sync_api import Page
 
+@pytest.mark.smoke   #esto es como un bookmark, ejecuta solo los tests marcados con smoke
 def test_login_success(page:Page):
     page.goto("https://www.saucedemo.com/")
     page.get_by_role('textbox',name='Username').fill('standard_user')
